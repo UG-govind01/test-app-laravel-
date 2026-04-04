@@ -38,11 +38,11 @@ class LeadIndustryController extends Controller
 
     // 4️⃣ Show edit form
    
-public function edit(LeadIndustry $leadIndustry)
+public function edit($id)
 {
+    $leadIndustry = LeadIndustry::findOrFail($id);
     return view('leadindustry.edit', compact('leadIndustry'));
 }
-
     // 5️⃣ Update data
 public function update(Request $request, LeadIndustry $leadIndustry)
 {
@@ -51,9 +51,11 @@ public function update(Request $request, LeadIndustry $leadIndustry)
 }
 
     // 6️⃣ Delete data
-    public function destroy(LeadIndustry $leadIndustry)
-    {
-        $leadIndustry->delete();
-        return redirect()->route('leadindustry.index');
-    }
+   public function destroy($id)
+{
+    $leadIndustry = LeadIndustry::findOrFail($id);
+    $leadIndustry->delete();
+
+    return redirect()->route('leadindustry.index');
+}
 }

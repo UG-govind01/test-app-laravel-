@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\LeadIndustryController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -23,3 +24,4 @@ Route::get('/hello', function () {
         "id" => 6
     ]);
 });
+Route::apiResource('leadindustry', LeadIndustryController::class);
